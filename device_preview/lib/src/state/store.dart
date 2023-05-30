@@ -20,11 +20,13 @@ class DevicePreviewStore extends ChangeNotifier {
     required this.defaultDevice,
     List<Locale>? locales,
     List<DeviceInfo>? devices,
+    bool isFrameVisible = true,
     required this.storage,
   }) {
     initialize(
       locales: locales,
       devices: devices,
+      isFrameVisible: isFrameVisible,
     );
   }
 
@@ -61,6 +63,7 @@ class DevicePreviewStore extends ChangeNotifier {
   Future<void> initialize({
     List<Locale>? locales,
     List<DeviceInfo>? devices,
+    required bool isFrameVisible,
   }) async {
     await state.maybeWhen(
       notInitialized: () async {
@@ -96,9 +99,9 @@ class DevicePreviewStore extends ChangeNotifier {
         }
 
         data ??= DevicePreviewData(
-          locale: defaultLocale,
-          customDevice: _defaultCustomDevice,
-        );
+            locale: defaultLocale,
+            customDevice: _defaultCustomDevice,
+            isFrameVisible: isFrameVisible);
 
         if (data.customDevice == null) {
           data = data.copyWith(

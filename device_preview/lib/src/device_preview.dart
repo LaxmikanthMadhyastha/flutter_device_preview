@@ -479,11 +479,11 @@ class _DevicePreviewState extends State<DevicePreview> {
 
     return ChangeNotifierProvider(
       create: (context) => DevicePreviewStore(
-        defaultDevice: widget.defaultDevice ?? Devices.ios.iPhone13,
-        devices: widget.devices,
-        locales: widget.availableLocales,
-        storage: storage,
-      ),
+          defaultDevice: widget.defaultDevice ?? Devices.ios.iPhone13,
+          devices: widget.devices,
+          locales: widget.availableLocales,
+          storage: storage,
+          isFrameVisible: widget.data?.isFrameVisible ?? true),
       builder: (context, child) {
         final isInitialized = context.select(
           (DevicePreviewStore store) => store.state.maybeMap(

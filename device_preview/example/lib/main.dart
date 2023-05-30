@@ -8,11 +8,11 @@ import 'custom_plugin.dart';
 void main() {
   runApp(
     DevicePreview(
+      data: const DevicePreviewData(
+          isFrameVisible: true,
+          orientation: Orientation.landscape,
+          boldText: true),
       enabled: true,
-      tools: [
-        ...DevicePreview.defaultTools,
-        const CustomPlugin(),
-      ],
       builder: (context) => const BasicApp(),
     ),
   );
